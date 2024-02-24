@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4tr5yj2xyqe"]
+
+[ext_resource type="Script" path="res://Scenes/Main/main_screen.gd" id="1_hcogp"]
+[ext_resource type="FontFile" uid="uid://cduhw3f77tq2r" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="1_k5eiq"]
+[ext_resource type="PackedScene" uid="uid://dt22exjbfbjv3" path="res://Scenes/LevelButton/LevelButton.tscn" id="2_e1h6u"]
+[ext_resource type="PackedScene" uid="uid://c338brg1185ij" path="res://Scenes/FrontSprite/front_sprite.tscn" id="2_wjjjl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uf7av"]
+font = ExtResource("1_k5eiq")
+font_size = 84
+font_color = Color(0.92549, 0.988235, 0.796078, 1)
+outline_size = 6
+outline_color = Color(0.396078, 0.639216, 0.0509804, 1)
+
+[node name="MainScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hcogp")
+level_button_scene = ExtResource("2_e1h6u")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.392157, 0.196078)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spacer" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Memory Madness"
+label_settings = SubResource("LabelSettings_uf7av")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer2" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBLevels" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="Spacer3" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBSprites" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 72
+
+[node name="FrontSprite" parent="VBoxContainer/HBSprites" instance=ExtResource("2_wjjjl")]
+layout_mode = 2
+
+[node name="FrontSprite2" parent="VBoxContainer/HBSprites" instance=ExtResource("2_wjjjl")]
+layout_mode = 2
+
+[node name="FrontSprite3" parent="VBoxContainer/HBSprites" instance=ExtResource("2_wjjjl")]
+layout_mode = 2
+
+[node name="FrontSprite4" parent="VBoxContainer/HBSprites" instance=ExtResource("2_wjjjl")]
+layout_mode = 2
+
+[node name="Spacer4" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
