@@ -7,6 +7,7 @@ const SOUND_GAME_OVER = "gameover"
 const SOUND_SELECT_TILE = "tile"
 const SOUND_SELECT_BUTTON = "button"
 
+const MUTE_SOUNDS = true
 
 const SOUNDS = {
 	SOUND_MAIN_MENU: preload("res://assets/sounds/bgm_action_3.mp3"),
@@ -22,6 +23,10 @@ func play_sound(player:AudioStreamPlayer, key:String) -> void:
 	if SOUNDS.has(key) == false:
 		return
 		
+	if MUTE_SOUNDS:
+		player.stop()
+		return
+
 	player.stop()
 	player.stream = SOUNDS[key]
 	player.play()
@@ -29,4 +34,9 @@ func play_sound(player:AudioStreamPlayer, key:String) -> void:
 
 func play_button_clicked(player:AudioStreamPlayer) -> void:
 	play_sound(player, SOUND_SELECT_BUTTON)
-	
+
+
+
+func play_tile_clicked(player:AudioStreamPlayer) -> void:
+	play_sound(player, SOUND_SELECT_TILE)
+
