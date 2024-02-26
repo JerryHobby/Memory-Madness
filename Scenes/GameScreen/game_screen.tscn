@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bl70vheah70tm"]
+[gd_scene load_steps=10 format=3 uid="uid://bl70vheah70tm"]
 
 [ext_resource type="LabelSettings" uid="uid://1w68ghfdnfy3" path="res://Scenes/black_48.tres" id="1_6afpj"]
 [ext_resource type="Texture2D" uid="uid://cw7olnxefkdqr" path="res://assets/ui/blue_button00.png" id="2_u0dfj"]
@@ -7,15 +7,20 @@
 [ext_resource type="Texture2D" uid="uid://dngq8ynciggrg" path="res://assets/ui/green_button00.png" id="4_ahq42"]
 [ext_resource type="LabelSettings" uid="uid://do5wp1vw4xugu" path="res://Scenes/white_30.tres" id="5_4san3"]
 [ext_resource type="PackedScene" uid="uid://mu5pw25u0rpo" path="res://Scenes/Scorer/scorer.tscn" id="7_ugtwb"]
+[ext_resource type="PackedScene" uid="uid://dwk2ek48ar88t" path="res://Scenes/GameOver/game_over.tscn" id="8_gx7on"]
 
 [sub_resource type="GDScript" id="GDScript_8g3ov"]
 script/source = "extends Control
 
 @export var mem_tile_scene: PackedScene
+@onready var game_over = $GameOver
+
+@onready var moves_label = $HB/MC2/VBoxContainer/HB1/MovesLabel
+@onready var pairs_label = $HB/MC2/VBoxContainer/HB2/PairsLabel
 
 @onready var sound = $Sound
 @onready var tile_container = $HB/MC1/TileContainer
-@onready var scorer = $Scorer
+@onready var scorer:Scorer = $Scorer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,7 +30,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	moves_label.text = scorer.get_moves_made()
+	pairs_label.text = scorer.get_pairs_made()
 
 
 func _on_exit_button_pressed():
@@ -154,5 +160,14 @@ vertical_alignment = 1
 [node name="Sound" type="AudioStreamPlayer" parent="."]
 
 [node name="Scorer" parent="." instance=ExtResource("7_ugtwb")]
+
+[node name="GameOver" parent="." instance=ExtResource("8_gx7on")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 
 [connection signal="pressed" from="HB/MC2/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
