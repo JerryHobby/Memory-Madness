@@ -30,7 +30,8 @@ func get_level_selection(level_num:int) -> Dictionary:
 		"num_cols": level_data.cols,
 		"image_list": selected_level_images
 	}
-	
+
+
 func clear_nodes_in_group(group:String) -> void:
 	for n in get_tree().get_nodes_in_group(group):
 		n.queue_free()

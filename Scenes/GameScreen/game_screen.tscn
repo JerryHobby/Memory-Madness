@@ -28,9 +28,10 @@ script/source = "extends Control
 func _ready():
 	SignalManager.on_level_selected.connect(on_level_selected)
 	SignalManager.on_game_over.connect(on_game_over)
+	#mc_2.show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	moves_label.text = scorer.get_moves_made()
 	pairs_label.text = scorer.get_pairs_made()
 
@@ -56,9 +57,10 @@ func add_memory_tile(ii_dict: Dictionary, frame_image:CompressedTexture2D) -> vo
 	tile_container.add_child(new_tile)
 	new_tile.setup(ii_dict, frame_image)
 
+
 func on_game_over(_score: int) -> void:
-	mc_2.hide()
-	
+	#mc_2.hide()
+	pass
 "
 
 [node name="GameScreen" type="Control"]

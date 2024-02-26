@@ -17,11 +17,6 @@ func _ready():
 	SignalManager.on_game_exit_pressed.connect(on_game_exit_pressed)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func check_game_over() -> void:
 	if _pairs_made >= _target_pairs:
 		SignalManager.on_game_over.emit(_moves_made)

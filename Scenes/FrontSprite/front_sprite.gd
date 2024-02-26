@@ -5,6 +5,7 @@ const SCALE_NORMAL:Vector2 = Vector2(1.0, 1.0)
 const SPIN_TIME_RANGE:Vector2 = Vector2(1.0, 2.0)
 const SCALE_TIME:float = 0.5
 	
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	run_me()
